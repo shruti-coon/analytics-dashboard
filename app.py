@@ -32,7 +32,7 @@ if file is not None:
     else:
         data = pd.read_excel(file)
 
-    # ✅ SESSION STATE (important)
+    # SESSION STATE (important)
     if "data" not in st.session_state:
         st.session_state.data = data
 
@@ -111,7 +111,7 @@ if file is not None:
             except Exception as e:
              st.error("❌ Invalid operation for selected column")
 
-        # ✅ Charts (FIXED)
+        # Charts (FIXED)
         st.subheader('Charts')
 
         chart_type = st.selectbox('Chart Type', ['Scatter', 'Bar', 'Line', 'Histogram'])
@@ -119,7 +119,7 @@ if file is not None:
 
         numeric_cols = data.select_dtypes(include='number').columns
 
-        fig = None  # ✅ prevent undefined error
+        fig = None  
 
         if chart_type != 'Histogram':
             y = st.selectbox('Y-axis', data.columns)
@@ -156,7 +156,7 @@ if file is not None:
             corr = data.corr(numeric_only=True)
             st.dataframe(corr)
 
-        # ✅ Smart Insights
+        # Smart Insights
         if st.button('Smart Insights'):
             numeric_cols = data.select_dtypes(include='number').columns
 
